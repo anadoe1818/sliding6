@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Presentation Editor</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Left Sidebar -->
+        <div class="sidebar">
+            <!-- <div class="sidebar-header">
+                <div class="sidebar-logo">
+                    <span class="logo-circle">SA</span>
+                    <div class="sidebar-brand">
+                        <span class="brand-title">Slides Agent</span>
+                        <span class="brand-subtitle"></span>
+                    </div>
+                </div>
+                <button class="sidebar-toggle"><i class="fas fa-angle-right"></i></button>
+            </div> -->
+            <nav class="sidebar-menu">
+                <ul class="sidebar-menu-list">
+                    <li class="sidebar-menu-item"><i class="fas fa-paint-brush"></i> Style</li>
+                    <li class="sidebar-menu-item"><i class="fas fa-magic"></i> Prompt specifics</li>
+                    <li class="sidebar-menu-item"><i class="fas fa-database"></i> Content Management</li>
+                </ul>
+            </nav>
+            <div class="upload-section">
+                <h3>Presentation</h3>
+                <button id="loadPresentation" class="btn">
+                    <i class="fas fa-upload"></i> 
+                </button>
+                <button id="newPresentation" class="btn">
+                    <i class="fas fa-plus"></i> 
+                </button> 
+                <input type="file" id="fileInput" accept=".ppt,.pptx" style="display: none;">
+            </div>
+            <div id="presentation-preview" class="presentation-preview">
+                <!-- Slides preview will be shown here -->
+            </div>
+            <!-- <div class="sidebar-footer">
+                <button class="sidebar-footer-btn"><i class="fas fa-sign-out-alt"></i> Logout</button>
+                <div class="sidebar-darkmode">
+                    <i class="fas fa-moon"></i> Dark Mode
+                    <label class="switch">
+                        <input type="checkbox" id="darkModeToggle">
+                        <span class="slider round"></span>
+                    </label>
+                </div>
+            </div> -->
+        </div>
+        <div id="rightDrawer" class="right-drawer">
+            <div class="drawer-content" id="drawerContent">
+                <!-- Dynamic content will be injected here -->
+                <div class="drawer-style-item">
+                    <label>Content Text Color</label>
+                    <div class="drawer-color-row">
+                        <input type="color" id="contentTextColorPicker" class="drawer-color-picker">
+                        <input type="text" id="contentTextColorRGB" class="drawer-input" placeholder="RGB Code (e.g. 34,34,34)">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Main Content -->
+        <div class="main-content">
+            <div class="top-bar">
+                <!-- (Keep this for other top bar items if needed) -->
+            </div>
+            <div class="main-functions-bar">
+                <button id="newPresentationMain" class="main-fn-btn"><i class="fas fa-plus"></i> Create new presentation</button>
+                <button id="loadPresentationMain" class="main-fn-btn"><i class="fas fa-upload"></i> Upload presentation</button>
+                <button id="addSlide" class="main-fn-btn"><i class="fas fa-plus"></i> Add new Slide</button>
+                <button id="savePresentation" class="main-fn-btn"><i class="fas fa-save"></i> Save Presentation</button>
+            </div>
+            <!-- Chat Interface -->
+            <div class="chat-container">
+                <div id="chatMessages" class="chat-messages"></div>
+                <div class="chat-input-container">
+                    <textarea id="messageInput" placeholder="Type your message here..."></textarea>
+                    <button id="sendMessage" class="btn">
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="slideLayoutModal" class="modal" style="display:none;">
+        <div class="modal-content">
+            <h3>Select a Slide Layout</h3>
+            <div class="layout-options">
+                <div class="layout-card" data-layout="boxes">
+                    <div class="layout-preview boxes-preview">
+                        <div class="box-row">
+                            <div class="box"></div>
+                            <div class="box"></div>
+                            <div class="box"></div>
+                        </div>
+                    </div>
+                    <button class="select-layout-btn">Select</button>
+                    <div class="layout-label">Boxes</div>
+                </div>
+                <div class="layout-card" data-layout="versus">
+                    <div class="layout-preview versus-preview">
+                        <img src="icons/versus.png" alt="Versus" class="layout-img-versus">
+                        <div class="versus-row">
+                            <div class="versus-box left"></div>
+                            <div class="versus-box right"></div>
+                        </div>
+                    </div>
+                    <button class="select-layout-btn">Select</button>
+                    <div class="layout-label">Versus</div>
+                </div>
+                <div class="layout-card" data-layout="brain">
+                    <div class="layout-preview brain-preview">
+                        <img src="icons/brain.png" alt="Brain" class="layout-img-brain">
+                        <div class="brain-col">
+                            <div class="brain-box top"></div>
+                            <div class="brain-box bottom"></div>
+                        </div>
+                    </div>
+                    <button class="select-layout-btn">Select</button>
+                    <div class="layout-label">Brain</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html> 
